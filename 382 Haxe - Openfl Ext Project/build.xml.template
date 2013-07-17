@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+	<!-- NMML reference: https://gist.github.com/1763850 -->
+	
+	<!-- metadata, make sure 'package' is at least 3 segments (ie. com.mycompany.myproject) -->
+	<meta title="$(ProjectName)" package="$(PackageDot)$(ProjectID)" version="1.0.0" company="$(DefaultUser)" />
+	
+	<!-- output -->
+	<app main="$(PackageDot)Main" file="$(ProjectID)" path="bin" />
+	
+	<window background="#FFFFFF" fps="60" unless="mobile"/>
+	<window background="#FFFFFF" fps="30" if="mobile"/>
+	<window width="800" height="480" unless="mobile" />
+	<window orientation="landscape" vsync="false" antialiasing="0" if="cpp" />
+	
+	<!-- <window width="480" height="640" orientation="portrait" background="0x000000" resizable="false" fps="60"/> -->
+	
+	<android target-sdk-version="14" />
+	<android minimim-sdk-version="14" />
+
+	<!-- <certificate path="assets/$(ProjectName)-release-key.keystore" password="88888888" alias="$(ProjectName)" alias-password="88888888" ></certificate> -->
+
+	<!-- classpath, haxe libs -->
+	<source path="src" />
+	<!-- <source name="../../src/" /> -->
+	<haxelib name="openfl" />
+	<haxelib name="actuate" />
+	<!-- <haxelib name="msignal" /> -->
+
+	<!-- assets -->
+	<icon path="assets/openfl.svg" />
+	<assets path="assets/img" rename="img" />
+	<!-- <assets path="ui/android" include="*" exclude="defaults.xml|skins.xml"/> -->
+	<!-- <assets path="assets" include="*" /> -->
+	
+	<!-- optimize output -->
+	<set name="haxe3" />
+	<haxeflag name="-dce std" if="haxe3" />
+	
+	<include path="./include.xml" />
+    
+</project>

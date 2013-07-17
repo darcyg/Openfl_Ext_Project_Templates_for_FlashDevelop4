@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+
+	<!-- misc -->
+		<ndll name="HypSystem" if="ios"/>
+		<ndll name="HypSystem" if="blackberry"/>
+		<classpath name="ext/src" />
+
+	<!-- Android -->
+		<java path="ext/project/android" if="android" />
+		<!--<template path="ext/templates/android/res" rename="res" if="android" />-->
+		<templatePath name="ext/templates" if="android" />
+
+	<!-- iOS -->
+		<dependency name="SystemConfiguration.framework" if="ios" />
+
+</project>

@@ -1,0 +1,70 @@
+package $(PackageName);
+
+import flash.display.Sprite;
+import flash.events.Event;
+import flash.Lib;
+import fr.hyperfiction.HypSystem;
+
+/**
+$(CBI)* ...
+$(CBI)* @author $(DefaultUser)
+$(CBI)*/
+
+class Main extends Sprite $(CSLB){
+	var inited:Bool;
+
+	/* ENTRY POINT */
+	
+	function resize(e) $(CSLB){
+		if (!inited) init();
+		// else (resize or orientation change)
+	}
+	
+	function init() $(CSLB){
+		if (inited) return;
+		inited = true;
+
+		// (your code here)
+		
+		// Stage:
+		// stage.stageWidth x stage.stageHeight @ stage.dpiScale
+		
+		// Assets:
+		// openfl.Assets.getBitmapData("img/assetname.jpg");
+		testExt();
+	}
+
+	function testExt(){
+	        trace("UUID        : " + HypSystem.getUuid());
+	        trace("LocalIP     : " + HypSystem.getLocal_IP());
+	        trace("isWifi      : " + HypSystem.isWifi());
+	        trace("isSmartPhone: " + HypSystem.isSmartPhone());
+	        trace("isConnected : " + HypSystem.isConnected());
+	        trace("SystemLang  : " + HypSystem.getSystem_lang());
+	        trace("getDensity  : " + HypSystem.getDensity());
+	}
+
+	/* SETUP */
+
+	public function new() $(CSLB){
+		super();	
+		addEventListener(Event.ADDED_TO_STAGE, added);
+	}
+
+	function added(e) $(CSLB){
+		removeEventListener(Event.ADDED_TO_STAGE, added);
+		stage.addEventListener(Event.RESIZE, resize);
+		#if ios
+		haxe.Timer.delay(init, 100); // iOS 6
+		#else
+		init();
+		#end
+	}
+	
+	public static function main() $(CSLB){
+		// static entry point
+		Lib.current.stage.align = flash.display.StageAlign.TOP_LEFT;
+		Lib.current.stage.scaleMode = flash.display.StageScaleMode.NO_SCALE;
+		Lib.current.addChild(new Main());
+	}
+}

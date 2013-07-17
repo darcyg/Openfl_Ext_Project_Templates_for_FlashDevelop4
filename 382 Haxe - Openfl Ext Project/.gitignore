@@ -1,0 +1,11 @@
+bin/*
+bin.build
+build/*
+build.build
+assets/*.keystore
+assets/font/*
+assets/img/*
+assets/demo/backup/*
+design/*
+*.log
+*.pyc

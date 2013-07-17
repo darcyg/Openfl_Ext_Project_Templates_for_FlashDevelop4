@@ -1,0 +1,47 @@
+执行run.bat方法
+
+安装python 2.7
+    http://www.python.org/download/releases/2.7.5/
+        http://www.python.org/ftp/python/2.7.5/python-2.7.5.msi
+        http://www.python.org/ftp/python/2.7.5/python-2.7.5.amd64.msi
+
+安装第三方安装库
+手工{
+    easy_install
+        下载
+        https://bitbucket.org/pypa/setuptools/downloads/ez_setup.py
+        双击或执行
+        python.exe ez_setup.py
+	    https://bitbucket.org/pypa/setuptools/get/default.tar.gz#egg=setuptools-dev
+        介绍 https://pypi.python.org/pypi/setuptools/0.9.5#downloads
+    pip
+        下载
+        wget  http://python-distribute.org/distribute_setup.py
+        python distribute_setup.py
+        wget  https://github.com/pypa/pip/raw/master/contrib/get-pip.py
+        python get-pip.py
+}
+自动{
+    执行tools/install目录下的install.bat
+    distribute_setup.py 可能需要代理
+}
+
+安装第三方工具库
+pip install chardet
+
+run.bat -h 看参数说明
+
+模式 默认 -b
+   -b -r -t -c / 编译 执行 测试 清除
+
+目标 默认 -f
+   -a -f -n -w / 安卓 FLASH Neko虚拟机 Windows
+
+工程 默认 build.nmml
+   -p xxx.nmml / 指定编译的工程文件
+
+示例
+run -a  ==  openfl build build.xml android
+run -t  ==  openfl test build.xml flash
+run -c -a  ==  openfl clean build.xml android
+run -p build-demo.xml -w -t  ==  openfl test build-demo.xml windows

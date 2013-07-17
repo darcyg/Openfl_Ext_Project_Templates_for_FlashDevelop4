@@ -1,0 +1,1 @@
+keytool -genkey -v -keystore ../assets/tvapp-release-key.keystore -alias studylauncher -keyalg RSA -validity 30000

@@ -1,0 +1,1 @@
+keytool -genkey -v -keystore ../assets/$(ProjectName)-release-key.keystore -alias $(ProjectName) -keyalg RSA -validity 30000
